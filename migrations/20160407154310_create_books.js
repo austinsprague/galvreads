@@ -1,14 +1,14 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('authors'), function(table) {
+  return knex.schema.createTable('books'), function(table) {
     table.increments();
-    table.string('Book Title');
-    table.integer('Book Genre');
-    table.text('Book Description');
-    table.string('Book Cover URL')
-  });
+    table.string('title');
+    table.integer('genre');
+    table.text('description');
+    table.string('url');
+  };
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('authors');
+  return knex.schema.dropTable('books');
 };
