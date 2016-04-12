@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1 Edit Author
+  
+  form(action="/authors/" + theAuthor.id + '/update' + '?_method=put' method="post")
+    div
+      label First Name
+        input(type="text" name="first name" value= theAuthor.first)
+        

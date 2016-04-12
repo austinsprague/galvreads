@@ -2,4 +2,19 @@ extends ../layout
 
 block content
   h1 Authors
+  for author in allAuthors
+    .row
+      .two.columns
+        a(href='', <='', a='')
+          img(src= author.url)
+      .eight.columns
+        a(href='/authors/' + author.id)
+          h4.author_name= author.first + ' ' + author.last
+        h6.author_bio= author.bio
+      a(href='books/:id') Books
+          
+              
+      
+  
+  
   

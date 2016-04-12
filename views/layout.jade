@@ -2,6 +2,17 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/skeleton.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav
+      - var nav = {}; nav[title] ='active'
+      ul
+        li(class='#{nav.Home}')
+          a(href='/') Home
+        li(class='#{nav.Authors}')
+          a(href='/authors') Authors
+        li(class='#{nav.Books}')
+          a(href='/books') Books
+    block content 

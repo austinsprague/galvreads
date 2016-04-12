@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1 Books
+  for books in allBooks
+    .row
+      .two.columns
+        a(href='', <='', a='')
+          img(src= books.url)
+      .eight.columns
+        h4.books_title= books.title
+        
+        h6.books_desc= books.description
+      h6.books_genre Language: #{books.genre}
+      a(href='authors/:id') Authors

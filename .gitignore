@@ -1,5 +1,6 @@
 “node-modules”
-“node-modules”
 ‘npm-debug.log’
 ‘.DS-Store’
 
+
+‘/.env’
