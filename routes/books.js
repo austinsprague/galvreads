@@ -7,16 +7,25 @@ function Books() {
   return knex('books');
 }
 
-function Author_Book() {
+function Authors_Books() {
   return knex('authors_books');
 }
 router.get('/', function(req, res, next) {
-  // Author_Book().select().innerJoin('books', 'books.id', 'authors_books.book_id').then(function(books) {
+  // Authors_Books().select().innerJoin('books', 'books.id', 'authors_books.book_id' ).innerJoin( 'authors', 'authors.id', 'authors_books.author_id' ).then(function(books){
+  //   // console.log(books[1].id);
+  //   // console.log(books.length);
   //   console.log(books);
+  //   books.forEach(function(book) {
+  //     book.authors= [];
+  //     if (book.authors)
+
+
+
+  Authors_Books().select().innerJoin('books', 'books.id', 'authors_books.book_id').then(function(books) {
   Books().select().then(function (books) {
-    return Author_Book().select().innerJoin('authors', 'author_id', 'authors.id').then(function(authors){
+    return Authors_Books().select().innerJoin('authors', 'authors_books.author_id', 'authors.id').then(function(authors){
       books.forEach(function(book){
-        book.authors = '';
+        book.authors = [];
         authors.forEach(function(author){
           if (author.book_id === book.id) {
             book.authors += author.first + ' ' + author.last + ' ';
@@ -26,6 +35,8 @@ router.get('/', function(req, res, next) {
 
       res.render('books/index', {
         allBooks: books
+
+        })
       });
     });
   });
