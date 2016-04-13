@@ -6,10 +6,10 @@ block content
     .row
       .two.columns
         a(href='', <='', a='')
-          img(src= books.url)
+          img(src= books.books_url)
       .eight.columns
         h4.books_title= books.title
-        
+        h5.authors= books.authors
         h6.books_desc= books.description
       h6.books_genre Language: #{books.genre}
       a(href='authors/:id') Authors

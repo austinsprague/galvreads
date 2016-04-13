@@ -6,19 +6,27 @@ const knex = require('../db/knex');
 function Books() {
   return knex('books');
 }
-function Authors_Books() {
+
+function Author_Book() {
   return knex('authors_books');
 }
-
 router.get('/', function(req, res, next) {
+  // Author_Book().select().innerJoin('books', 'books.id', 'authors_books.book_id').then(function(books) {
+  //   console.log(books);
   Books().select().then(function (books) {
-    //inner join both tables
+    return Author_Book().select().innerJoin('authors', 'author_id', 'authors.id').then(function(authors){
+      books.forEach(function(book){
+        book.authors = '';
+        authors.forEach(function(author){
+          if (author.book_id === book.id) {
+            book.authors += author.first + ' ' + author.last + ' ';
+          }
+        })
+      })
 
-    //array for unique id for book or author
-    //else append the array
-
-    res.render('books/index', {
-      allBooks: books
+      res.render('books/index', {
+        allBooks: books
+      });
     });
   });
 });
