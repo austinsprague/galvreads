@@ -35,16 +35,16 @@ router.get('/new', function(req, res, next) {
 })
 
 router.get('/:id', function(req, res, next) {
-  Books().where({id: req.params.id}).first().then(function (book) {
-
-      // return Authors_Books().then(function(author) {
+  Books().where({id: req.params.id}).then(function (book) {
+      return Authors_Books().then(function(author) {
+        console.log(author);
       //   book.authors = [];
       //
       //
       //   if (author.book_id === book.id) {
       //     book.authors.push(author.first + ' ' + author.last + ' ');
       //   }
-      // });
+      });
     res.render('books/show', {
       theBook: book
     });
