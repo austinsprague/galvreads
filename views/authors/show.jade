@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1= Author
+  h1 Author
   .row
     .two.columns
       a(href='/authors' + theAuthor.id, <='', a='')
@@ -11,6 +11,7 @@ block content
         h5.author_name= theAuthor.first + ' ' + theAuthor.last
       h6.author_bio= theAuthor.bio
       a(href='books/:id') Books
+      p= theBook
       
     .two.columns  
       a(href="/authors" + theAuthor.id + '/update')

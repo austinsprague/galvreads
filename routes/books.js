@@ -8,11 +8,11 @@ function Books() {
 }
 
 function Authors_Books() {
-  return knex('authors_books').select().innerJoin('authors', 'authors_books.author_id', 'authors.id');
+  return knex('authors_books');
 }
 router.get('/', function(req, res, next) {
   Books().select().then(function (books) {
-    return Authors_Books().then(function(authors) {
+    return Authors_Books().select().innerJoin('authors', 'authors_books.author_id', 'authors.id').then(function(authors) {
       books.forEach(function(book){
         book.authors = [];
 
@@ -35,19 +35,23 @@ router.get('/new', function(req, res, next) {
 })
 
 router.get('/:id', function(req, res, next) {
-  Books().where({id: req.params.id}).then(function (book) {
-      return Authors_Books().then(function(author) {
-        console.log(author);
-      //   book.authors = [];
-      //
-      //
-      //   if (author.book_id === book.id) {
-      //     book.authors.push(author.first + ' ' + author.last + ' ');
-      //   }
+  Books().where({id: req.params.id}).first().then(function (book) {
+      // console.log(book.id);
+      return Authors_Books().where({book_id: book.id}).first().innerJoin('authors', 'authors_books.author_id', 'authors.id').then(function(author) {
+        // console.log(author);
+        book.authors = [];
+
+        if (author.book_id === book.id) {
+          book.authors.push(author.first + ' ' + author.last + ' ');
+        }
+        console.log(book);
+
+      res.render('books/show', {
+        theBook: book
       });
-    res.render('books/show', {
-      theBook: book
+
     });
+
   });
 });
 
