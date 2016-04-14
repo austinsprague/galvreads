@@ -9,7 +9,7 @@ block content
           img(src= books.books_url)
       .eight.columns
         h4.books_title= books.title
-        h5.authors= books.authors
+        h5.authors By: #{books.authors}
         h6.books_desc= books.description
       h6.books_genre Language: #{books.genre}
-      a(href='authors/:id') Authors
+      a(href='authors') Authors
