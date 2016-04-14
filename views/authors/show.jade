@@ -1,10 +1,21 @@
 extends ../layout
 
 block content
-  h1= theAuthor.name
-  div
-    a(href="/authors" + theAuthor.id + '/update')
-      button(type="submit") Edit
-    form(action="/authors/" + theAuthor.id + '/delete?_method=delete' method="post")
-      button(type="submit") Delete
+  h1= Author
+  .row
+    .two.columns
+      a(href='/authors' + theAuthor.id, <='', a='')
+        img(src= theAuthor.authors_url)
+    .eight.columns
+      a(href='/authors' + theAuthor.id)
+        h5.author_name= theAuthor.first + ' ' + theAuthor.last
+      h6.author_bio= theAuthor.bio
+      a(href='books/:id') Books
+      
+    .two.columns  
+      a(href="/authors" + theAuthor.id + '/update')
+        button(type="submit") Edit
+      form(action="/authors/" + theAuthor.id + '/delete?_method=delete' method="post")
+        button(type="submit") Delete
+      
   

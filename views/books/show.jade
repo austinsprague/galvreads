@@ -1,14 +1,18 @@
 extends ../layout
 
 block content
-  h1 theBook.name
-  .row
-    .two.columns
-      a(href='/books' + theBook.id, <='', a='')
-        img(src= books.books_url)
-    .eight.columns
-      h4.books_title= books.title
-      h5.authors= books.authors
-      h6.books_desc= books.description
-    h6.books_genre Language: #{books.genre}
-    a(href='authors/:id') Authors
+  h1 Books
+    .row
+      .two.columns
+        a(href='/books/' + theBook.id, <='', a='')
+          img(src= theBook.books_url)
+      .eight.columns
+        h4.books_title= theBook.title
+        h5.authors By: #{theBook.authors}
+        h6.books_desc= theBook.description
+      h6.books_genre Language: #{theBook.genre}
+      .two.columns  
+        a(href="/books" + theBook.id + '/update')
+          button(type="submit") Edit
+        form(action="/books/" + theBook.id + '/delete?_method=delete' method="post")
+          button(type="submit") Delete

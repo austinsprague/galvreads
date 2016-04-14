@@ -5,11 +5,12 @@ block content
   for author in allAuthors
     .row
       .two.columns
-        a(href='', <='', a='')
+        a(href='/authors/'+ author.id, <='', a='')
           img(src= author.authors_url)
       .eight.columns
-        a(href='/authors' + author.id)
-          h5.author_name= author.first + ' ' + author.last
+        //- a(href='/authors' + author.id)
+        h4.author_name= author.first + ' ' + author.last + ' '
+        h5.author_books Books: 
         h6.author_bio= author.bio
       a(href='books/:id') Books
           

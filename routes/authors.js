@@ -28,8 +28,8 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.get('/:id/update', function(req, res, next) {
-  Authors.where({id: req.params.id}).first().then(function (author) {
-    res.render('authors/edit', {theAuthor: author})
+  Authors().where({id: req.params.id}).first().then(function (author) {
+    res.render('authors/update', {theAuthor: author})
   })
 })
 
