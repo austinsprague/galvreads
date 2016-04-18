@@ -6,16 +6,19 @@ block content
   form(action="/authors", method="post")
     div
       label First Name
-      input(type="text" name="first_name")
+      input(type="text" name="first")
     div
       label Last Name
-      input(type="text" name="last_name")
+      input(type="text" name="last")
     div
       label Portrait URL
-      input(type="text" name="portrait_url")
+      input(type="text" name="authors_url")
     div
       label Biography
-      input(type="text" name="biography")
+      textarea(type="text" name="bio")
+    div
+      input(class='button-primary' type='submit' name='add_author')
+      
     
       
     

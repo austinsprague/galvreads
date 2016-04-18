@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 New Book
+  
+  form(action='/books', method='post')
+  
+    div.row
+      div.six=columns
+        label Title
+        input(type='text' name='title')
+      div.six=columns
+        label Genre
+        input(type='text' name='genre')  
+      label Description
+        textarea(class='u-full-width' type='textarea' name='description')
+      label Book URL
+        input(type='text' name='book_url')  
+      label Author id
+        input(type='integer' name='author_id')
+    div
+      input(class='button-primary' type='submit' name='Add Book')

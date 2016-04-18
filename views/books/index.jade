@@ -5,11 +5,12 @@ block content
   for books in allBooks
     .row
       .two.columns
-        a(href='/books/' + books.id, <='', a='')
+        a(href='/books/#{books.id}', <='', a='')
           img(src= books.books_url)
       .eight.columns
-        h4.books_title= books.title
-        h5.books_genre Genre: #{books.genre}
-        h6.books_desc= books.description
+        h4.books_title #{books.title}
+        h5.authors By: #{books.authors}
+        h6.books_desc #{books.description}
+      .two.columns  
+        h6.books_genre Language: #{books.genre}
       
-      h6.authors By: #{books.authors}

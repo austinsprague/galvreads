@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Author
+    form(action='/books/#{theBook.id}/update/?method=put' method='post')
+      div
+        label Title:
+        input(type='text' name='books-title' value= #{theBook.title})
+      div
+        label Genre:
+        input(type='text' name='book-genre' value= #{theBook.genre})
+      div
+        label Description:
+        input(type='text' name='book-description' value= #{theBook.description})
